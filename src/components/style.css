@@ -1,0 +1,10 @@
+.country {
+  position: relative;
+}
+
+.country__delete {
+  position: absolute;
+  /* bottom: 10px;
+  right: 10px; */
+  z-index: 5;
+}

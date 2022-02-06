@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// import { useSelector } from "react-redux";
+// import CountryDetails from "./components/CountryDetails";
+// import Main from "./components/Main";
+import AppRouter from "./components/pages";
 
-function App() {
+const App = () => {
+  // const { countryList, fixedList, selectedCountry } = useSelector(
+  //   (state) => state.countries
+  // );
+  //const fixedList = useSelector((state) => state.countries.fixedList);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    //   <Router>
+    //     <Routes>
+    //       {countryList.map((country) => (
+    //         <Route
+    //           key={country.name + Date.now()}
+    //           path={`/${handleUrl(country.name)}`}
+    //           element={<CountryDetails />}
+    //         />
+    //       ))}
+    //       <Route path="/" element={<Main />} />
+    //       <Route path="*" element={() => <p>ERROR</p>} />
+    //     </Routes>
+    //   </Router>
+    // );
+    <AppRouter />
   );
-}
+};
 
 export default App;

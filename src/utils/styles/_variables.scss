@@ -1,0 +1,131 @@
+/* media queries */
+
+$grid-medium: 750px;
+$grid-large: 992px;
+$grid-xl-large: 1200px;
+$grid-widescreen: 1400px;
+$grid-gutter: 30px;
+$grid-gutter-mobile: 22px;
+
+$small: "small"; // only screen and (max-width: 749px)
+$medium: "medium"; // only screen and (min-width: 750px) and (max-width: 991px)
+$medium-down: "medium-down"; // only screen and (max-width: 991px)
+$medium-up: "medium-up"; // only screen and (min-width: 750px)
+$large: "large"; // only screen and (min-width: 992px) and (max-width: 1399px)
+$large-down: "large-down"; // only screen and (max-width: 1399px)
+$large-up: "large-up"; // only screen and (min-width: 992px)
+$large-xl-up: "large-xl-up"; // only screen and (min-width: 1200px)
+$widescreen: "widescreen";
+$ios5: "ios5";
+$ios6: "ios6";
+$ios6plus: "ios6plus";
+$iosX: "iosX";
+$iosXR: "iosXR";
+$iosMax: "iosMax";
+
+/* Fonts */
+$fs-base: 16;
+$fs-sm: 14;
+$fw-norm: 400;
+$fw-bold: 600;
+$color-base: #111827;
+$color-bg: #fcfcfc;
+
+body[data-theme="dark"] {
+  $color-text: $color-base;
+  $color-bg: #3730a3;
+  $shadow: rgba(245, 245, 245, 0.2) 0 0 8px;
+}
+
+body[data-theme="light"] {
+  $color-text: #111827;
+  $color-bg: #fcfcfc;
+  $shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
+}
+
+// body {
+//   color: $color-text;
+//   font-weight: $fw-norm;
+//   background-color: $color-bg;
+// }
+
+/* Colours */
+$c1: #ffffff;
+$c2: #d4d4d4;
+$c3: #1f2937;
+$c4: #2563eb;
+$c5: #4f46e5;
+$c6: #3b82f6;
+$c7: #000;
+$c8: #e5e7eb;
+$c9: #d4d4d4;
+$c10: #f3f4f6;
+$c11: #d1d5db;
+$c12: #f9fafb;
+$c13: #9da2a8;
+$c14: #fcfcfc;
+$c15: #3f4349;
+$c16: #4b5563;
+$c17: #dbeafe;
+$c18: #111827;
+$c19: #fb923c;
+$c20: #374151;
+$c21: #1e40af;
+//bg color when modal pop-ups
+$c22: rgba(17, 24, 39, 0.15);
+$c23: #4338ca;
+$c24: #c7d2fe;
+$c25: #9ca3af;
+$c26: #6b7280;
+$c27: #dc2626;
+$c28: #a9adb4;
+$c29: #10b981;
+$c30: #d9f99d;
+$c31: #075985;
+$c32: #3730a3;
+$c33: #92400e;
+$c34: #065f46;
+$c35: #3f6212;
+$c36: #bae6fd;
+$c37: #e0e7ff;
+$c38: #fde68a;
+$c39: #a7f3d0;
+
+$c28: #a9adb4;
+
+$c30: #d9f99d;
+$c31: #075985;
+$c32: #3730a3;
+$c33: #92400e;
+$c34: #065f46;
+$c35: #3f6212;
+$c36: #bae6fd;
+$c37: #e0e7ff;
+$c38: #fde68a;
+$c39: #a7f3d0;
+$c40: #c4c4c4;
+$c41: #bfdbfe;
+
+/* Other styles */
+$transition: 0.3s;
+$radius: 4px;
+$shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1),
+  0px 4px 6px -2px rgba(0, 0, 0, 0.05);
+$animation: ease;
+
+$z-indexes: (relative, dropdown, modal, extra);
+
+@function z-index($element, $list: "") {
+  @if $list == "" {
+    $list: $z-indexes;
+  }
+
+  $z-index: index($list, $element);
+
+  @if $z-index {
+    @return $z-index;
+  }
+
+  @warn 'There is no item "#{$element}" in this list; choose one of: #{$list}';
+  @return null;
+}
