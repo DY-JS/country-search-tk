@@ -1,7 +1,8 @@
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
 
-import CountryItem from "./CountryItem";
+import CountryItem from "../CountryItem";
+import { ListContainer } from "./StyledComponents";
 
 const CountryList = () => {
   const { countryList, fixedList } = useSelector((state) => state.countries);
@@ -28,25 +29,17 @@ const CountryList = () => {
   // const displayList = useMemo(() => {
   //   return [...fixedList, ...filteredList];
   // }, [filteredList]);
-  const handleUrl = (name) => {
-    const res = name.toLowerCase().split("");
-    return res
-      .map((char) => {
-        return char == " " ? "-" : char;
-      })
-      .join("");
-  };
 
   return (
     query && (
-      <div>
+      <ListContainer>
         {/* {displayList.map((country, index) => (
           <CountryItem key={country.name + index} country={country} />
         ))} */}
         {filteredList.map((country, index) => (
           <CountryItem key={country.name + index} country={country} />
         ))}
-      </div>
+      </ListContainer>
     )
   );
 };

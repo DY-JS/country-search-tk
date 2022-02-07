@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { fetchCountries } from "../store/ActionCreators";
-import SearchField from "./SearchField";
-import CountryList from "./CountryList";
+import { fetchCountries } from "../../store/ActionCreators";
+import SearchField from "../SearchField";
+import CountryList from "../CountryList";
+import { MainContainer } from "./StyledComponents";
 
 function Main() {
   const dispatch = useDispatch();
@@ -16,10 +17,10 @@ function Main() {
   }, []);
 
   return (
-    <div>
+    <MainContainer>
       <SearchField />
       <CountryList />
-    </div>
+    </MainContainer>
   );
 }
 

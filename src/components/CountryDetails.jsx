@@ -1,11 +1,25 @@
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate, NavLink } from "react-router-dom";
+import { useNavigate, NavLink, useLocation } from "react-router-dom";
+//import { useHistory } from "react-router";
 import Flag from "react-world-flags";
 
 const CountryDetails = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const n = location.pathname;
+  const p = n.split("/").join("");
+  console.log(navigate(-1));
+  //const hist = useHistory();
 
   const { selectedCountry } = useSelector((state) => state.countries);
+
+  useEffect(() => {
+    //e.preventDefault();
+    if (navigate(-1) !== p) {
+      navigate(1);
+    }
+  }, [location]);
   return (
     <>
       <NavLink to="/">On Main</NavLink>
