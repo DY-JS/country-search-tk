@@ -1,8 +1,14 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate, NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-import { Checkbox, Controls, CountryCard, Title } from "./StyledComponents";
+import {
+  Button,
+  Checkbox,
+  Controls,
+  CountryCard,
+  Title,
+} from "./StyledComponents";
 import { handleUrl } from "../../utils/helpers";
 import {
   addToFixedList,
@@ -34,25 +40,27 @@ const CountryItem = ({ country }) => {
 
   const handleSelect = () => {
     dispatch(setSelectedCountry(country.name));
-    //country && navigate(`${country.name}`);
+  };
+
+  const goToDetails = () => {
+    handleSelect();
+    navigate(`/${handleUrl(country.name)}`, { state: { from: "countryItem" } });
   };
 
   useEffect(() => {
     if (fixedList.some((c) => c.name === country.name)) {
       setIsChecked(true);
     }
-  }, [fixedList]);
+  }, [fixedList, country.name]);
 
   return (
     country && (
       <CountryCard
-        onClick={handleSelect}
+        onClick={goToDetails}
         onMouseEnter={makeIsHover}
         onMouseLeave={makeNotHover}
       >
-        <NavLink to={`/${handleUrl(country.name)}`}>
-          <Title>{country.name}</Title>
-        </NavLink>
+        <Title>{country.name}</Title>
         {isHover && (
           <Controls>
             <Checkbox
@@ -62,12 +70,9 @@ const CountryItem = ({ country }) => {
               onClick={(e) => e.stopPropagation()}
               onChange={makeFixedCountry}
             />
-            <input
-              type="button"
-              disabled={isChecked}
-              onClick={removeCountry}
-              value="Delete"
-            />
+            <Button type="button" disabled={isChecked} onClick={removeCountry}>
+              Delete
+            </Button>
           </Controls>
         )}
       </CountryCard>

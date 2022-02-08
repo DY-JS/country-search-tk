@@ -10,9 +10,10 @@ const App = () => {
   // );
   //const fixedList = useSelector((state) => state.countries.fixedList);
   return (
-    //   <Router>
-    //     <Routes>
-    //       {countryList.map((country) => (
+    <>
+      {/* <Router>
+         <Routes>  */}
+      {/* //       {countryList.map((country) => (
     //         <Route
     //           key={country.name + Date.now()}
     //           path={`/${handleUrl(country.name)}`}
@@ -23,8 +24,9 @@ const App = () => {
     //       <Route path="*" element={() => <p>ERROR</p>} />
     //     </Routes>
     //   </Router>
-    // );
-    <AppRouter />
+    // ); */}
+      <AppRouter />
+    </>
   );
 };
 

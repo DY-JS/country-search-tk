@@ -7,7 +7,7 @@ export const ListContainer = styled.div`
   margin: 0 auto;
   padding: 1%;
 
-  @media (min-width: 500px) {
+  @media (min-width: 400px) {
     width: 98%;
   }
 `;

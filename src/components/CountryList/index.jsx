@@ -7,10 +7,6 @@ import { ListContainer } from "./StyledComponents";
 const CountryList = () => {
   const { countryList, fixedList } = useSelector((state) => state.countries);
   const query = useSelector((state) => state.query.query);
-  // const startFixedList = useMemo(() => {
-  //   //зафиксировал начальное значение fixedList
-  //   return [...fixedList];
-  // }, []);
 
   const filteredList = useMemo(() => {
     if (query) {
@@ -23,24 +19,15 @@ const CountryList = () => {
         ),
       ];
     }
-    //else return countryList;
+    return fixedList;
   }, [query, countryList]);
 
-  // const displayList = useMemo(() => {
-  //   return [...fixedList, ...filteredList];
-  // }, [filteredList]);
-
   return (
-    query && (
-      <ListContainer>
-        {/* {displayList.map((country, index) => (
-          <CountryItem key={country.name + index} country={country} />
-        ))} */}
-        {filteredList.map((country, index) => (
-          <CountryItem key={country.name + index} country={country} />
-        ))}
-      </ListContainer>
-    )
+    <ListContainer>
+      {filteredList.map((country, index) => (
+        <CountryItem key={country.name + index} country={country} />
+      ))}
+    </ListContainer>
   );
 };
 

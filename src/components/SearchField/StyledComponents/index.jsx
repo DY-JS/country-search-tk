@@ -37,7 +37,7 @@ export const Controls = styled.div`
     position: absolute;
     width: 13px;
     height: 13px;
-    top: 10px;
+    top: 15px;
     left: 8px;
     background: url(${search}) 0 / cover no-repeat;
     z-index: 2;
@@ -46,10 +46,10 @@ export const Controls = styled.div`
 
 export const Input = styled.input`
   width: 70%;
-  height: 30px;
+  height: 40px;
   padding-left: 25px;
   font-size: 14px;
-  font-weight: normal;
+  font-weight: 400;
   background: #fff;
   border: 1px solid #e1e7ed;
   box-sizing: border-box;
@@ -86,10 +86,11 @@ export const Input = styled.input`
 export const Button = styled.button`
   ${flexCenter}
   width: 25%;
-  height: 30px;
+  height: 40px;
   padding: 10px;
   font-size: 14px;
-  font-weight: normal;
+  color: #fff;
+  font-weight: 400;
   background: #3b82f6;
   box-sizing: border-box;
   border-radius: 4px;
@@ -98,7 +99,7 @@ export const Button = styled.button`
   transition: 0.3s;
 
   &:hover {
-    color: #fff;
+    font-weight: 600;
     background: #dc2626;
   }
 
