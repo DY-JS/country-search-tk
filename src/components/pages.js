@@ -5,6 +5,7 @@ import { handleUrl } from "../utils/helpers";
 
 import CountryDetails from "./CountryDetails";
 import Main from "./Main";
+import { CheckReload } from "./HOC/CheckReload";
 
 const AppRouter = () => {
   const { countryList } = useSelector((state) => state.countries);
@@ -15,7 +16,11 @@ const AppRouter = () => {
           <Route
             key={country.name + Date.now()}
             path={`/${handleUrl(country.name)}`}
-            element={<CountryDetails />}
+            element={
+              <CheckReload>
+                <CountryDetails />
+              </CheckReload>
+            }
           />
         ))}
         <Route path="/" element={<Main />} />

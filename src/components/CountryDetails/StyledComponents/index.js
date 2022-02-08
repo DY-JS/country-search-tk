@@ -6,21 +6,21 @@ const flexCenter = `
     align-items: center;
 `;
 
-const flexColumnBetween = `
+const flexColumn = `
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 `;
 
 /*components*/
 export const DetailsCard = styled.div`
-  ${flexColumnBetween};
-  height: 20%;
+  ${flexColumn};
+  min-height: 250px;
   min-width: 250px;
   width: 50%;
   margin: 0 auto;
-  padding: 20px 5px;
+  padding: 15px 5px;
   font-size: 14px;
   font-weight: 400;
   background: #fff;
@@ -29,9 +29,8 @@ export const DetailsCard = styled.div`
   box-shadow: 0 1px 8px rgba(61, 78, 97, 0.1);
   border-radius: 4px;
   overflow: hidden;
-  transform: translateY(50%);
+  transform: translateY(30%);
   transition: 0.3s;
-  cursor: pointer;
 
   @media (min-width: 500px) {
     font-size: 16px;
@@ -44,22 +43,34 @@ export const DetailsCard = styled.div`
   }
 `;
 
+export const FlagWrapper = styled.div`
+  width: 300px;
+  height: 200px;
+  margin: 0;
+`;
+
 export const Detail = styled.p`
   padding-bottom: 15px;
   font-size: 16px;
   font-weight: 600;
 `;
 
+export const Info = styled.div`
+  margin-top: 40px;
+`;
+
 export const Img = styled.img`
-  margin-right: 15px;
-  transform: translateY(20%);
+  transform: translateY(25%);
+  margin-left: 10px;
   width: 30px;
-  height: 20px;
+  height: 25px;
 `;
 
 export const Text = styled.span`
   font-size: 20px;
   font-weight: 600;
+  color: #3b82f6;
+  padding-left: 10px;
 `;
 
 export const Back = styled.div`

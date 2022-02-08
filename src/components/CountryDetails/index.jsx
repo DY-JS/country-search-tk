@@ -1,42 +1,55 @@
-import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate, NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Flag from "react-world-flags";
 import arrow from "../../utils/pictures/arrow-back.svg";
+import lock from "../../utils/pictures/locked.svg";
 
-import { handleUrl } from "../../utils/helpers";
-import { DetailsCard, Detail, Img, Text, Back } from "./StyledComponents";
+import {
+  DetailsCard,
+  FlagWrapper,
+  Detail,
+  Info,
+  Img,
+  Text,
+  Back,
+} from "./StyledComponents";
 
 const CountryDetails = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
+  const { fixedList, selectedCountry } = useSelector(
+    (state) => state.countries
+  );
 
-  const { selectedCountry } = useSelector((state) => state.countries);
-
-  useEffect(() => {
-    if (location.state.from !== "countryItem") {
-      navigate(`/${handleUrl(selectedCountry.name)}`);
-    }
-  }, [location.state.from, navigate, selectedCountry]);
+  const check = fixedList.some(
+    (country) => country.name === selectedCountry.name
+  );
 
   return (
     <>
       <Back>
         <NavLink to="/">
           <Img src={arrow} alt="Back" />
-          <Text>Go To Search Page</Text>
+          <Text>Back To Search Page</Text>
         </NavLink>
       </Back>
       <DetailsCard>
-        <div style={{ width: "200px", height: "200px" }}>
+        <FlagWrapper>
           <Flag code={selectedCountry.alpha2Code} />
-        </div>
-        <div>
-          <Detail>Name: {selectedCountry.name}</Detail>
-          <Detail>alpha3Code: {selectedCountry.alpha3Code}</Detail>
-          <Detail>alpha2Code: {selectedCountry.alpha2Code}</Detail>
-          <Detail>Domain: {selectedCountry.topLevelDomain}</Detail>
-        </div>
+        </FlagWrapper>
+        <Info>
+          <Detail>
+            Country:<Text>{selectedCountry.name}</Text>
+            {check && <Img src={lock} alt="fixed" />}
+          </Detail>
+          <Detail>
+            alpha3Code:<Text>{selectedCountry.alpha3Code}</Text>
+          </Detail>
+          <Detail>
+            alpha2Code:<Text>{selectedCountry.alpha2Code}</Text>
+          </Detail>
+          <Detail>
+            Domain:<Text>{selectedCountry.topLevelDomain}</Text>
+          </Detail>
+        </Info>
       </DetailsCard>
     </>
   );

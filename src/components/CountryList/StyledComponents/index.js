@@ -11,3 +11,10 @@ export const ListContainer = styled.div`
     width: 98%;
   }
 `;
+
+export const Info = styled.h1`
+  text-align: center;
+  font-size: 36px;
+  font-weight: 600;
+  color: #000;
+`;

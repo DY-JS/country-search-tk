@@ -2,10 +2,12 @@ import { useMemo } from "react";
 import { useSelector } from "react-redux";
 
 import CountryItem from "../CountryItem";
-import { ListContainer } from "./StyledComponents";
+import { Info, ListContainer } from "./StyledComponents";
 
 const CountryList = () => {
-  const { countryList, fixedList } = useSelector((state) => state.countries);
+  const { countryList, fixedList, status, error } = useSelector(
+    (state) => state.countries
+  );
   const query = useSelector((state) => state.query.query);
 
   const filteredList = useMemo(() => {
@@ -23,11 +25,15 @@ const CountryList = () => {
   }, [query, countryList]);
 
   return (
-    <ListContainer>
-      {filteredList.map((country, index) => (
-        <CountryItem key={country.name + index} country={country} />
-      ))}
-    </ListContainer>
+    <>
+      {status === "loading" && <Info>Loading...</Info>}
+      {error && <Info>{error}</Info>}
+      <ListContainer>
+        {filteredList.map((country, index) => (
+          <CountryItem key={country.name + index} country={country} />
+        ))}
+      </ListContainer>
+    </>
   );
 };
 

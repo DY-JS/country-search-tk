@@ -8,7 +8,7 @@ export const fetchCountries = createAsyncThunk(
       const response = await axios.get("https://restcountries.com/v2/all");
       return response.data;
     } catch (e) {
-      return thunkApi.rejectwithValue("Loading error");
+      return thunkApi.rejectWithValue("Loading error");
     }
   }
 );
