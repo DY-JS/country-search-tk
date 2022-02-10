@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Flag from "react-world-flags";
 
 import {
   Button,
@@ -8,6 +9,8 @@ import {
   Controls,
   CountryCard,
   Title,
+  Code,
+  FlagContainer,
 } from "./StyledComponents";
 import { handleUrl } from "../../utils/helpers";
 import {
@@ -16,7 +19,7 @@ import {
   setSelectedCountry,
 } from "../../store/countrySlice";
 
-const CountryItem = ({ country }) => {
+const CountryItem = ({ onDragStart, onDrop, country }) => {
   const { fixedList } = useSelector((state) => state.countries);
   const [isChecked, setIsChecked] = useState(false);
   const [isHover, setIsHover] = useState(false);
@@ -59,10 +62,14 @@ const CountryItem = ({ country }) => {
         onClick={goToDetails}
         onMouseEnter={makeIsHover}
         onMouseLeave={makeNotHover}
+        onDragStart={(e) => onDragStart(e, country)}
+        onDrop={(e) => onDrop(e, country)}
+        draggable={true}
       >
         <Title>{country.name}</Title>
-        {isHover && (
-          <Controls>
+        <Code>{country.alpha3Code}</Code>
+        <Controls>
+          {(isHover || isChecked) && (
             <Checkbox
               checked={isChecked}
               name="input"
@@ -70,11 +77,17 @@ const CountryItem = ({ country }) => {
               onClick={(e) => e.stopPropagation()}
               onChange={makeFixedCountry}
             />
+          )}
+          {isHover ? (
             <Button type="button" disabled={isChecked} onClick={removeCountry}>
               Delete
             </Button>
-          </Controls>
-        )}
+          ) : (
+            <FlagContainer>
+              <Flag code={country.alpha2Code} />
+            </FlagContainer>
+          )}
+        </Controls>
       </CountryCard>
     )
   );

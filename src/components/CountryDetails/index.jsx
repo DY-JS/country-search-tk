@@ -27,7 +27,7 @@ const CountryDetails = () => {
     <>
       <Back>
         <NavLink to="/">
-          <Img src={arrow} alt="Back" />
+          <Img src={arrow} alt="back-link" />
           <Text>Back To Search Page</Text>
         </NavLink>
       </Back>

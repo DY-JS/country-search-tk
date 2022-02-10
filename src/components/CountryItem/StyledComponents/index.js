@@ -23,7 +23,7 @@ const flexColumnBetween = `
 /*components*/
 export const CountryCard = styled.div`
   ${flexColumnBetween};
-  height: 180px;
+  height: 200px;
   margin: 10px;
   padding: 10px;
   border-radius: 6px;
@@ -42,13 +42,29 @@ export const Title = styled.p`
   font-size: 20px;
   font-weight: 600px;
   line-height: 22px;
-  padding: 5px;
   color: #000;
+`;
+
+export const Code = styled.p`
+  font-size: 16px;
+  font-weight: 600px;
+  line-height: 18px;
+  transform: translateY(-50%);
+  color: #000;
+`;
+
+export const FlagContainer = styled.div`
+  width: 50%;
+  height: 10%;
+  margin: 0 auto;
+  padding-bottom: 3px;
+  transform: translateY(-1000%);
 `;
 
 export const Controls = styled.div`
   ${flexBetween};
   width: 100%;
+  height: 20px;
 `;
 
 export const Checkbox = styled.input`

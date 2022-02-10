@@ -13,7 +13,7 @@ export const CheckReload = ({ children }) => {
   const handleReload = () => {
     if (countryList.length === 0) {
       dispatch(fetchCountries());
-      const chunk = location.pathname.slice(1, 5);
+      let chunk = location.pathname.slice(1, 5);
       const country = countryList.find((c) => c.name.includes(chunk));
       dispatch(setSelectedCountry(country.name));
     }
