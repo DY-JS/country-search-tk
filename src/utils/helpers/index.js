@@ -5,6 +5,9 @@ export const handleUrl = (name) => {
       if (char === "å") {
         return "a";
       }
+      if (char === "é") {
+        return "e";
+      }
       if (char === " ") {
         return "-";
       } else return char;

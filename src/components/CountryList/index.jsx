@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 
 import CountryItem from "../CountryItem";
 import { Info, ListContainer } from "./StyledComponents";
@@ -11,31 +12,19 @@ const CountryList = () => {
   const query = useSelector((state) => state.query.query);
 
   const [currentList, setCurrentList] = useState([...fixedList]);
-  const [dragCountry, setDragCountry] = useState(null);
 
-  const handleDragStart = (e, country) => setDragCountry(country);
+  const handleOnDragEnd = (result) => {
+    if (
+      !result.destination ||
+      result.destination.index === result.source.index
+    ) {
+      return;
+    }
 
-  const handleDrop = (e, country) => {
-    e.preventDefault();
-    let aimItem = null;
-    let endIndex = null;
-    let drugItem = null;
-    let startIndex = null;
-
-    currentList.forEach((c, i) => {
-      if (c.name === country.name) {
-        endIndex = i;
-        aimItem = [...currentList].splice(i, 1);
-      }
-      if (c.name === dragCountry.name) {
-        startIndex = i;
-        drugItem = [...currentList].splice(i, 1);
-      }
-    });
-    setCurrentList((current) => {
-      currentList.splice(endIndex, 1, { ...drugItem });
-      currentList.splice(startIndex, 1, { ...aimItem });
-    });
+    const items = Array.from(currentList);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+    setCurrentList(items);
   };
 
   useEffect(() => {
@@ -44,7 +33,7 @@ const CountryList = () => {
         ...fixedList,
         ...countryList.filter(
           (country) =>
-            country.name.includes(query) &&
+            country.name.toLowerCase().includes(query.toLowerCase()) &&
             fixedList.every((c) => c.name !== country.name)
         ),
       ]);
@@ -55,25 +44,36 @@ const CountryList = () => {
     <>
       {status === "loading" && <Info>Loading...</Info>}
       {error && <Info>{error}</Info>}
-      <ListContainer>
-        {currentList
-          // .sort((a, b) => {
-          //   return a.name.localeCompare(b.name);
-          // })
-          .map((country, index) => (
-            <CountryItem
-              onDragStart={handleDragStart}
-              // onDragLeave={handleDragEnd}
-              // onDragEnd={handleDragEnd}
-              // onDragOver={handleDragEnd}
-              onDrop={handleDrop}
-              draggable={true}
-              key={country.name + index}
-              country={country}
-              //index={index}
-            />
-          ))}
-      </ListContainer>
+      <DragDropContext onDragEnd={handleOnDragEnd}>
+        <Droppable droppableId="currentList">
+          {(provided) => (
+            <ListContainer {...provided.droppableProps} ref={provided.innerRef}>
+              {currentList.map((country, index) => {
+                return (
+                  <Draggable
+                    key={country.name + index}
+                    draggableId={country.name + index}
+                    index={index}
+                  >
+                    {(provided) => (
+                      <div
+                        onDragOver={(e) => e.preventDefault()}
+                        onDragEnter={(e) => e.preventDefault()}
+                        onDragLeave={(e) => e.preventDefault()}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        ref={provided.innerRef}
+                      >
+                        <CountryItem country={country} />
+                      </div>
+                    )}
+                  </Draggable>
+                );
+              })}
+            </ListContainer>
+          )}
+        </Droppable>
+      </DragDropContext>
     </>
   );
 };

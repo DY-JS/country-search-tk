@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import Flag from "react-world-flags";
 import arrow from "../../utils/pictures/arrow-back.svg";
-import lock from "../../utils/pictures/locked.svg";
+import star from "../../utils/pictures/star.svg";
 
 import {
   DetailsCard,
@@ -38,7 +38,7 @@ const CountryDetails = () => {
         <Info>
           <Detail>
             Country:<Text>{selectedCountry.name}</Text>
-            {check && <Img src={lock} alt="fixed" />}
+            {check && <Img src={star} alt="fixed" />}
           </Detail>
           <Detail>
             alpha3Code:<Text>{selectedCountry.alpha3Code}</Text>

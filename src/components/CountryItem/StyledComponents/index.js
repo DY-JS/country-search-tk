@@ -58,7 +58,7 @@ export const FlagContainer = styled.div`
   height: 10%;
   margin: 0 auto;
   padding-bottom: 3px;
-  transform: translateY(-1000%);
+  transform: translateY(-1200%);
 `;
 
 export const Controls = styled.div`

@@ -60,10 +60,10 @@ export const Info = styled.div`
 `;
 
 export const Img = styled.img`
-  transform: translateY(25%);
+  transform: translateY(20%);
   margin-left: 10px;
   width: 30px;
-  height: 25px;
+  height: 20px;
 `;
 
 export const Text = styled.span`

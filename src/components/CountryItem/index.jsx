@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+
 import Flag from "react-world-flags";
 
 import {
@@ -19,7 +20,7 @@ import {
   setSelectedCountry,
 } from "../../store/countrySlice";
 
-const CountryItem = ({ onDragStart, onDrop, country }) => {
+const CountryItem = ({ country }) => {
   const { fixedList } = useSelector((state) => state.countries);
   const [isChecked, setIsChecked] = useState(false);
   const [isHover, setIsHover] = useState(false);
@@ -62,9 +63,6 @@ const CountryItem = ({ onDragStart, onDrop, country }) => {
         onClick={goToDetails}
         onMouseEnter={makeIsHover}
         onMouseLeave={makeNotHover}
-        onDragStart={(e) => onDragStart(e, country)}
-        onDrop={(e) => onDrop(e, country)}
-        draggable={true}
       >
         <Title>{country.name}</Title>
         <Code>{country.alpha3Code}</Code>
