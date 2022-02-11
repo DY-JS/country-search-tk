@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+Create a React app to get and display a list of countries.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1. At the beginning of the page, place the search field and the search reset button
 
-## Available Scripts
+2. Below is a list of country cards, which is formed when the user starts entering text in the search field (the list is updated after the search field is changed).
 
-In the project directory, you can run:
+3. Card elements:
+   text on the card: country name and country code;
+   on the card, when you hover, two active elements appear: a checkbox and a delete button;
+   if you click on the checkbox, then this card will become linked and will not be deleted when the search criteria (reset) is changed. After changing the search criteria, the linked countries remain at the top of the list and are not deleted;
+   when you click on the delete button, the card is removed from the list.
 
-### `npm start`
+4. Clicking on the card will take you to the country details page. After reloading the details page - it should not be empty:
+   next to the name of the country there should be an icon associated with this country or not (pass the state through Redux)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Additional task
+!5. You can change the order of cards by dragging (drag-and-drop)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Requirements
 
-### `npm test`
+1. Use functional components and React Hooks
+2. To implement elements use
+   MaterialUI
+   Styled Components
+3. To manage global state - redux
+4. To get the list, you can use any library or API-services, as an alternative to https://restcountries.eu/
+5. To navigate react-router-dom
+6. Don't use LocalStorage
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+Создать React приложение для получения и отображения списка стран.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. В начале страницы расположить поле поиска и кнопку сброса поиска
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Ниже — список карточек стран, который формируется, когда пользователь начинает вводить текст в поле поиска (список обновляется после изменения поля поиска).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Элементы карточки:
+   текст на карточке: название страны и код страны;
+   на карточке, при наведении, появляются два активных элемента: чекбокс и кнопка удаления;
+   если нажать на чекбокс, то эта карточка становиться привязанной и при изменении критериев поиска(сброса) удаляться не будет. После изменения критериев поиска привязанные страны остаются в начале списка и не удаляются;
+   при нажатии на кнопку удаления, карточка удаляется из списка.
 
-### `npm run eject`
+4. По клику по карточке осуществляется переход на страницу деталей страны. После перезагрузки страницы деталей - она не должна быть пустой:
+   рядом с названием страны должна быть иконка привязана эта страна или нет (передать состояние через Redux)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Доп задание
+!5. Можно изменять порядок карточек перетягиванием (drag-and-drop)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Требования
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Использовать функциональные компоненты и React Hooks
+2. Для реализации элементов использовать
+   MaterialUI
+   Styled Components
+3. Для управления глобальным состоянием - redux
+4. Для получения списка можно использовать любую библиотеку или API-services, как альтернатива https://restcountries.eu/
+5. Для навигации react-router-dom
+6. Не использовать LocalStorage
+7. Задание выполнить в ветке develop и создать merge request в master
