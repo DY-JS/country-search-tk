@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 
-import { setSelectedCountry } from "../../store/countrySlice";
+import { setSelectedCountry } from "../../store/slices/countrySlice";
 import { fetchCountries } from "../../store/ActionCreators";
 
 export const CheckReload = ({ children }) => {
@@ -14,7 +14,9 @@ export const CheckReload = ({ children }) => {
     if (countryList.length === 0) {
       dispatch(fetchCountries());
       let chunk = location.pathname.slice(1, 5);
-      const country = countryList.find((c) => c.name.includes(chunk));
+      const country = countryList.find((c) =>
+        c.name.toLowerCase().includes(chunk)
+      );
       dispatch(setSelectedCountry(country.name));
     }
   };

@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import countryReducer from "./countrySlice";
-import queryReducer from "./querySlice";
+import countryReducer from "./slices/countrySlice";
+import queryReducer from "./slices/querySlice";
 
 export default configureStore({
   reducer: {

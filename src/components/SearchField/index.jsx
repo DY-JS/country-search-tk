@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 
-import { setQuery, resetQuery } from "../../store/querySlice";
+import { setQuery, resetQuery } from "../../store/slices/querySlice";
 import { Container, Controls, Input, Button } from "./StyledComponents";
 
 const SearchField = () => {

@@ -58,7 +58,7 @@ export const FlagContainer = styled.div`
   height: 10%;
   margin: 0 auto;
   padding-bottom: 3px;
-  transform: translateY(-1200%);
+  transform: translateY(-1150%);
 `;
 
 export const Controls = styled.div`
@@ -70,6 +70,7 @@ export const Controls = styled.div`
 export const Checkbox = styled.input`
   height: 20px;
   width: 20px;
+  cursor: pointer;
 `;
 
 export const Button = styled.button`

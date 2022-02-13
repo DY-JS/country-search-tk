@@ -18,7 +18,7 @@ import {
   addToFixedList,
   removeFromCountryList,
   setSelectedCountry,
-} from "../../store/countrySlice";
+} from "../../store/slices/countrySlice";
 
 const CountryItem = ({ country }) => {
   const { fixedList } = useSelector((state) => state.countries);
