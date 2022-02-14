@@ -57,4 +57,4 @@ Requirements
 4. Для получения списка можно использовать любую библиотеку или API-services, как альтернатива https://restcountries.eu/
 5. Для навигации react-router-dom
 6. Не использовать LocalStorage
-7. Задание выполнить в ветке develop и создать merge request в master
+7. Задание выполнить в ветке develop и создать merge request в main
