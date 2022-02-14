@@ -1,0 +1,17 @@
+/** Reset Styles **/
+@import "reset";
+/** fonts **/
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
+
+* {
+  box-sizing: border-box;
+  font-family: "Inter", serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
