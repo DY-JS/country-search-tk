@@ -64,7 +64,9 @@ const CountryList = () => {
                         {...provided.dragHandleProps}
                         ref={provided.innerRef}
                       >
-                        <CountryItem country={country} />
+                        <CountryItem
+                          query={query} 
+                          country={country} />
                       </div>
                     )}
                   </Draggable>

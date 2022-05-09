@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -20,7 +20,22 @@ import {
   setSelectedCountry,
 } from "../../store/slices/countrySlice";
 
-const CountryItem = ({ country }) => {
+const Highlight = ({filter, str}) => {   //ФУНКЦИЯ ПОДСВЕТКИ НАЙДЕННОГО СОВПАДЕНИЯ
+  if(!filter) return str;
+  const regex = new RegExp(filter, 'ig');
+  const matchValue = str.match(regex);
+  if(matchValue) {
+     return str.split(regex).map((s, i, arr) => {
+       if ( i < arr.length -1) {
+         const c =  matchValue.shift();
+         return <>{s}<span style={{background: 'yellow'}}>{c}</span></>
+        }
+        return s
+       })}
+      return str
+}
+
+const CountryItem = ({ query, country }) => {
   const { fixedList } = useSelector((state) => state.countries);
   const [isChecked, setIsChecked] = useState(false);
   const [isHover, setIsHover] = useState(false);
@@ -51,6 +66,10 @@ const CountryItem = ({ country }) => {
     navigate(`/${handleUrl(country.name)}`, { state: { from: "countryItem" } });
   };
 
+  const light = useCallback((str) => {
+    return <Highlight filter={query} str={str} />  
+  }, [query]);
+
   useEffect(() => {
     if (fixedList.some((c) => c.name === country.name)) {
       setIsChecked(true);
@@ -64,8 +83,8 @@ const CountryItem = ({ country }) => {
         onMouseEnter={makeIsHover}
         onMouseLeave={makeNotHover}
       >
-        <Title>{country.name}</Title>
-        <Code>{country.alpha3Code}</Code>
+        <Title>{light(country.name)}</Title>
+        <Code>{light(country.alpha3Code)}</Code>
         <Controls>
           {(isHover || isChecked) && (
             <Checkbox
